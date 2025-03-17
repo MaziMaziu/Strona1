@@ -3,34 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria - League of Legends</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Galeria bohaterów z gry League of Legends">
+    <title>League of Legends - Galeria</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="slideshow.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav class="container">
-            <img src="logo.png" alt="League of Legends Logo">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="League of Legends Logo" width="150" height="50">
+            </a>
             <ul>
-                <li><a href="index.html">Strona główna</a></li>
-                <li><a href="about.html">O grze</a></li>
-                <li><a href="gallery.html">Galeria</a></li>
-                <li><a href="stats.html">Statystyki</a></li>
-                <li><a href="vote.html">Głosowanie</a></li>
+                <li><a href="index.html" aria-label="Strona główna">Strona główna</a></li>
+                <li><a href="about.html" aria-label="Informacje o grze">O grze</a></li>
+                <li><a href="gallery.html" aria-label="Galeria bohaterów">Galeria</a></li>
+                <li><a href="stats.html" aria-label="Statystyki gry">Statystyki</a></li>
+                <li><a href="ligusia.html" aria-label="Strona z głosowaniem">Głosowanie</a></li>
             </ul>
+            <button class="mobile-toggle" aria-label="Menu mobilne">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
     
-    <section class="content">
-        <div class="container">
-            <h1>Galeria</h1>
-            <p>Galeria bohaterów w grze League of Legends...</p>
-        </div>
-    </section>
+    <main>
+        <section id="gallery" class="gallery section-padding">
+            <div class="container">
+                <h2>Galeria Bohaterów</h2>
+                <p>Poznaj najbardziej popularne postacie ze świata League of Legends.</p>
+            </div>
+            <div class="slideshow-container">
+                <div class="slide fade" data-hero="Veigar">
+                    <img src="Veigar.jpg" alt="Veigar - Mistrz Mrocznej Magii" width="800" height="500">
+                    <div class="caption">
+                        <h3>Veigar</h3>
+                        <p>Mistrz Mrocznej Magii</p>
+                        <p class="hero-description">Złowrogi mag specjalizujący się w potężnych zaklęciach, które potrafią natychmiastowo eliminować przeciwników.</p>
+                    </div>
+                </div>
+                
+                <div class="slide fade" data-hero="Lulu">
+                    <img src="Lulu.jpg" alt="Lulu - Wróżkowa Czarodziejka" width="800" height="500">
+                    <div class="caption">
+                        <h3>Lulu</h3>
+                        <p>Wróżkowa Czarodziejka</p>
+                        <p class="hero-description">Magiczna yordle, która potrafi zarówno wzmacniać sojuszników, jak i przemieniać przeciwników w niegroźne stworzenia.</p>
+                    </div>
+                </div>
+                
+                <div class="slide fade" data-hero="Malphite">
+                    <img src="Malphite.jpg" alt="Malphite - Odłamek Monolitu" width="800" height="500">
+                    <div class="caption">
+                        <h3>Malphite</h3>
+                        <p>Odłamek Monolitu</p>
+                        <p class="hero-description">Potężna żywa skała, której umiejętności specjalne pozwalają na inicjowanie walk drużynowych.</p>
+                    </div>
+                </div>
+                
+                <div class="slide fade" data-hero="Ahri">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg" alt="Ahri - Dziewięcioogoniasta Lisica" width="800" height="500">
+                    <div class="caption">
+                        <h3>Ahri</h3>
+                        <p>Dziewięcioogoniasta Lisica</p>
+                        <p class="hero-description">Czarująca vastajanka o dziewięciu białych ogonach, która potrafi manipulować magią i ludzką energią życiową.</p>
+                    </div>
+                </div>
+                
+                <div class="slide fade" data-hero="Yasuo">
+                    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Yasuo_0.jpg" alt="Yasuo - Nieprzebaczający" width="800" height="500">
+                    <div class="caption">
+                        <h3>Yasuo</h3>
+                        <p>Nieprzebaczający</p>
+                        <p class="hero-description">Zwinny szermierz władający techniką wiatru, oskarżony o zbrodnię, której nie popełnił.</p>
+                    </div>
+                </div>
+                
+                <!-- Przyciski nawigacyjne -->
+                <button class="prev" aria-label="Poprzedni slajd">&#10094;</button>
+                <button class="next" aria-label="Następny slajd">&#10095;</button>
+                
+                <!-- Kropki do nawigacji -->
+                <div class="dots-container">
+                    <span class="dot" onclick="currentSlide(0)" aria-label="Pierwszy slajd"></span>
+                    <span class="dot" onclick="currentSlide(1)" aria-label="Drugi slajd"></span>
+                    <span class="dot" onclick="currentSlide(2)" aria-label="Trzeci slajd"></span>
+                    <span class="dot" onclick="currentSlide(3)" aria-label="Czwarty slajd"></span>
+                    <span class="dot" onclick="currentSlide(4)" aria-label="Piąty slajd"></span>
+                </div>
+            </div>
+        </section>
+    </main>
     
     <footer>
-        <div class="container">
-            <p>&copy; 2025 League of Legends. Wszelkie prawa zastrzeżone.</p>
-        </div>
+        <p>&copy; 2025 League of Legends fan page. Wszystkie prawa zastrzeżone.</p>
     </footer>
+    
+    <script src="script.js"></script>
+    <script>
+        // Obsługa menu mobilnego
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+    </script>
 </body>
 </html>
