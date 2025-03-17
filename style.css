@@ -1,6 +1,4 @@
 /* Resetowanie domyślnych styli */
-
-
 * {
     margin: 0;
     padding: 0;
@@ -19,6 +17,12 @@ header {
     padding: 20px;
     font-size: 24px;
     border-bottom: 2px solid #C8AA6E;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 main {
@@ -77,4 +81,48 @@ li {
 
 .back-button:hover {
     background: #333;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+        font-size: 20px;
+        padding: 15px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .slideshow-container {
+        width: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    nav ul {
+        font-size: 14px;
+    }
+
+    .slide .caption {
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 14px;
+    }
 }
