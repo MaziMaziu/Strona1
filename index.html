@@ -3,289 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Strona poświęcona grze League of Legends, zawierająca galerię bohaterów, statystyki i system ocen">
     <title>League of Legends</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="League of Legends Logo" width="150" height="50">
-            </a>
+            <img src="logo.png" alt="League of Legends Logo">
             <ul>
-                <li><a href="#about" aria-label="Informacje o grze">O grze</a></li>
-                <li><a href="#gallery" aria-label="Galeria bohaterów">Galeria</a></li>
-                <li><a href="#stats" aria-label="Statystyki gry">Statystyki</a></li>
-                <li><a href="ligusia.html" aria-label="Strona z głosowaniem">Głosowanie</a></li>
+                <li><a href="about.html">O grze</a></li>
+                <li><a href="gallery.html">Galeria</a></li>
+                <li><a href="stats.html">Statystyki</a></li>
+                <li><a href="vote.html">Głosowanie</a></li>
             </ul>
-            <button class="mobile-toggle" aria-label="Menu mobilne">
-                <i class="fas fa-bars"></i>
-            </button>
         </nav>
     </header>
     
-    <main>
-        <section class="hero">
-            <div class="slogan">
-                <h1>Witaj w świecie League of Legends</h1>
-                <p>Odkryj magię najpopularniejszej gry MOBA na świecie</p>
+    <section class="hero">
+        <div class="slogan">
+            <h1>Witaj w świecie League of Legends</h1>
+        </div>
+    </section>
+    
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Galeria Bohaterów</h2>
+        </div>
+        <div class="slideshow-container">
+            <div class="slide fade" data-hero="Veigar">
+                <img src="Veigar.jpg" alt="Veigar">
+                <div class="caption">Veigar</div>
+                <div class="rating-opinions" id="Veigar-info"></div>
             </div>
-        </section>
-
-        <section id="about" class="about section-padding">
-            <div class="container">
-                <h2>O grze League of Legends</h2>
-                <p>League of Legends to dynamiczna gra typu MOBA (Multiplayer Online Battle Arena), w której drużyny składające się z potężnych bohaterów, każdy o unikalnych umiejętnościach, walczą o kontrolę nad mapą i zniszczenie wrogiego Nexusa.</p>
-                <div class="about-features">
-                    <div class="feature">
-                        <i class="fas fa-chess"></i>
-                        <h3>Strategiczna rozgrywka</h3>
-                        <p>Twórz potężne kombinacje, planuj taktykę i współpracuj z drużyną, aby osiągnąć zwycięstwo.</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-users"></i>
-                        <h3>Drużynowa współpraca</h3>
-                        <p>Dołącz do społeczności milionów graczy i znajdź przyjaciół do wspólnej gry.</p>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bolt"></i>
-                        <h3>Dynamiczna akcja</h3>
-                        <p>Weź udział w intensywnych bitwach, gdzie każda sekunda może przesądzić o zwycięstwie.</p>
-                    </div>
-                </div>
+            <div class="slide fade" data-hero="Lulu">
+                <img src="Lulu.jpg" alt="Lulu">
+                <div class="caption">Lulu</div>
+                <div class="rating-opinions" id="Lulu-info"></div>
             </div>
-        </section>
-
-        <section id="gallery" class="gallery section-padding">
-            <div class="container">
-                <h2>Galeria Bohaterów</h2>
-                <p>Poznaj najbardziej popularne postacie ze świata League of Legends.</p>
+            <div class="slide fade" data-hero="Malphite">
+                <img src="Malphite.jpg" alt="Malphite">
+                <div class="caption">Malphite</div>
+                <div class="rating-opinions" id="Malphite-info"></div>
             </div>
-            <div class="slideshow-container">
-                <div class="slide fade" data-hero="Veigar">
-                    <img src="Veigar.jpg" alt="Veigar - Mistrz Mrocznej Magii" width="800" height="500">
-                    <div class="caption">
-                        <h3>Veigar</h3>
-                        <p>Mistrz Mrocznej Magii</p>
-                    </div>
-                    <div class="rating-opinions" id="Veigar-info"></div>
-                </div>
-                <div class="slide fade" data-hero="Lulu">
-                    <img src="Lulu.jpg" alt="Lulu - Wróżkowa Czarodziejka" width="800" height="500">
-                    <div class="caption">
-                        <h3>Lulu</h3>
-                        <p>Wróżkowa Czarodziejka</p>
-                    </div>
-                    <div class="rating-opinions" id="Lulu-info"></div>
-                </div>
-                <div class="slide fade" data-hero="Malphite">
-                    <img src="Malphite.jpg" alt="Malphite - Odłamek Monolitu" width="800" height="500">
-                    <div class="caption">
-                        <h3>Malphite</h3>
-                        <p>Odłamek Monolitu</p>
-                    </div>
-                    <div class="rating-opinions" id="Malphite-info"></div>
-                </div>
-                
-                <!-- Navigation buttons -->
-                <button class="prev" aria-label="Poprzedni slajd">&#10094;</button>
-                <button class="next" aria-label="Następny slajd">&#10095;</button>
-                
-                <!-- Dots/circles for navigation -->
-                <div class="dots-container">
-                    <span class="dot" onclick="currentSlide(0)" aria-label="Pierwszy slajd"></span>
-                    <span class="dot" onclick="currentSlide(1)" aria-label="Drugi slajd"></span>
-                    <span class="dot" onclick="currentSlide(2)" aria-label="Trzeci slajd"></span>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 League of Legends. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll(".slide");
+            function showSlides() {
+                slides.forEach(slide => slide.style.display = "none");
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].style.display = "block";
+                updateHeroInfo(slides[slideIndex].getAttribute("data-hero"));
+                setTimeout(showSlides, 3000);
+            }
+            showSlides();
+            loadRatingsAndOpinions();
+        });
         
-        <section id="stats" class="stats section-padding">
-            <div class="container">
-                <h2>Statystyki gry League of Legends</h2>
-                <p class="section-description">League of Legends to jedna z najpopularniejszych gier online na świecie. Oto kilka imponujących statystyk z 2025 roku.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <i class="fas fa-users"></i>
-                        <h3>180 mln+</h3>
-                        <p>Miesięcznych graczy</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-gamepad"></i>
-                        <h3>180+</h3>
-                        <p>Bohaterów do wyboru</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-globe"></i>
-                        <h3>120+</h3>
-                        <p>Krajów, w których gra jest popularna</p>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-trophy"></i>
-                        <h3>12 mln+</h3>
-                        <p>Dolarów puli nagród na Mistrzostwach Świata</p>
-                    </div>
-                </div>
-                
-                <div class="advanced-stats">
-                    <h3>Szczegółowe statystyki gry</h3>
-                    
-                    <div class="stats-table-container">
-                        <table class="stats-table">
-                            <thead>
-                                <tr>
-                                    <th>Kategoria</th>
-                                    <th>Wartość</th>
-                                    <th>Zmiana rok do roku</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Liczba rozegranych meczów dziennie</td>
-                                    <td>8.5 miliona</td>
-                                    <td class="positive-change">+15%</td>
-                                </tr>
-                                <tr>
-                                    <td>Średni czas gry</td>
-                                    <td>32 minuty</td>
-                                    <td class="negative-change">-2%</td>
-                                </tr>
-                                <tr>
-                                    <td>Liczba aktywnych graczy w Europie</td>
-                                    <td>42 miliony</td>
-                                    <td class="positive-change">+8%</td>
-                                </tr>
-                                <tr>
-                                    <td>Liczba e-sportowych turniejów rocznie</td>
-                                    <td>245</td>
-                                    <td class="positive-change">+12%</td>
-                                </tr>
-                                <tr>
-                                    <td>Całkowita pula nagród e-sportowych</td>
-                                    <td>85 milionów $</td>
-                                    <td class="positive-change">+20%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="popular-champions">
-                        <h3>Najpopularniejsi bohaterowie w 2025</h3>
-                        <div class="champion-stats-grid">
-                            <div class="champion-stat">
-                                <div class="champion-icon">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/Lux.png" alt="Lux" width="64" height="64">
-                                </div>
-                                <div class="champion-info">
-                                    <h4>Lux</h4>
-                                    <div class="pick-rate">
-                                        <span>Pick rate: 23%</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 23%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="champion-stat">
-                                <div class="champion-icon">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/Yasuo.png" alt="Yasuo" width="64" height="64">
-                                </div>
-                                <div class="champion-info">
-                                    <h4>Yasuo</h4>
-                                    <div class="pick-rate">
-                                        <span>Pick rate: 21%</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 21%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="champion-stat">
-                                <div class="champion-icon">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/Ahri.png" alt="Ahri" width="64" height="64">
-                                </div>
-                                <div class="champion-info">
-                                    <h4>Ahri</h4>
-                                    <div class="pick-rate">
-                                        <span>Pick rate: 19%</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 19%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="champion-stat">
-                                <div class="champion-icon">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/Ezreal.png" alt="Ezreal" width="64" height="64">
-                                </div>
-                                <div class="champion-info">
-                                    <h4>Ezreal</h4>
-                                    <div class="pick-rate">
-                                        <span>Pick rate: 18%</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 18%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="champion-stat">
-                                <div class="champion-icon">
-                                    <img src="https://ddragon.leagueoflegends.com/cdn/13.24.1/img/champion/Jinx.png" alt="Jinx" width="64" height="64">
-                                </div>
-                                <div class="champion-info">
-                                    <h4>Jinx</h4>
-                                    <div class="pick-rate">
-                                        <span>Pick rate: 17%</span>
-                                        <div class="progress-bar">
-                                            <div class="progress" style="width: 17%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="regional-stats">
-                        <h3>Rozkład graczy według regionów</h3>
-                        <div class="regions-grid">
-                            <div class="region-stat">
-                                <h4>Azja Wschodnia</h4>
-                                <div class="percentage">42%</div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 42%"></div>
-                                </div>
-                            </div>
-                            <div class="region-stat">
-                                <h4>Europa</h4>
-                                <div class="percentage">28%</div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 28%"></div>
-                                </div>
-                            </div>
-                            <div class="region-stat">
-                                <h4>Ameryka Północna</h4>
-                                <div class="percentage">15%</div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 15%"></div>
-                                </div>
-                            </div>
-                            <div class="region-stat">
-                                <h4>Ameryka Południowa</h4>
-                                <div class="percentage">8%</div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 8%"></div>
-                                </div>
-                            </div>
-                            <div class="region-stat">
-                                <h4>Pozostałe regiony</h4>
-                                <div class="percentage">7%</div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 7%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div
+        function updateHeroInfo(hero) {
+            const ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+            const opinions = JSON.parse(localStorage.getItem("opinions")) || {};
+            let avgScore = ratings[hero] ? (ratings[hero].reduce((a, b) => a + b, 0) / ratings[hero].length).toFixed(1) : "Brak ocen";
+            let opinionsText = opinions[hero] ? opinions[hero].map(op => `<li>${op}</li>`).join("") : "Brak opinii";
+            
+            let infoContainer = document.getElementById(`${hero}-info`);
+            if (infoContainer) {
+                infoContainer.innerHTML = `
+                    <p><strong>Średnia ocena:</strong> ${avgScore}/10</p>
+                    <p><strong>Opinie:</strong></p>
+                    <ul>${opinionsText}</ul>
+                `;
+            }
+        }
+        
+        function loadRatingsAndOpinions() {
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach(slide => {
+                updateHeroInfo(slide.getAttribute("data-hero"));
+            });
+        }
+    </script>
+</body>
+</html>
