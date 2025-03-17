@@ -16,7 +16,6 @@ header {
     background: #0A1428;
     padding: 15px 0;
     border-bottom: 2px solid #C8AA6E;
-    width: 100%;
 }
 
 .container {
@@ -32,8 +31,6 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    width: 100%;
-    justify-content: space-around;
 }
 
 nav ul li a {
@@ -55,7 +52,6 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
 }
 
 .slogan {
@@ -68,7 +64,6 @@ nav ul li a:hover {
     padding: 50px 0;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
 }
 
 .feature {
@@ -83,7 +78,6 @@ nav ul li a:hover {
 
 .gallery {
     padding: 50px 0;
-    width: 100%;
 }
 
 .grid {
@@ -95,8 +89,7 @@ nav ul li a:hover {
 
 .gallery-item {
     position: relative;
-    width: 100%;
-    max-width: 300px;
+    width: 300px;
     overflow: hidden;
     border: 2px solid #C8AA6E;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -104,6 +97,7 @@ nav ul li a:hover {
 
 .gallery-item img {
     width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
 }
@@ -133,7 +127,6 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap;
 }
 
 .stat h3 {
@@ -144,7 +137,6 @@ nav ul li a:hover {
 footer {
     background: #0A1428;
     padding: 20px;
-    width: 100%;
     margin-top: 30px;
 }
 
