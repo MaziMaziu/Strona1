@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends - Głosowanie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>League of Legends - Oceny i Opinie</h1>
+    </header>
+    <main>
+        <section id="hero-selection">
+            <label for="hero">Wybierz bohatera:</label>
+            <select id="hero">
+                <option value="Veigar">Veigar</option>
+                <option value="Lulu">Lulu</option>
+                <option value="Malphite">Malphite</option>
+            </select>
+        </section>
+        <section id="rating">
+            <h2>Oceń bohatera</h2>
+            <input type="number" id="score" min="1" max="10" placeholder="Podaj ocenę (1-10)">
+            <button onclick="submitRating()">Dodaj ocenę</button>
+        </section>
+        <section id="opinions">
+            <h2>Dodaj opinię</h2>
+            <textarea id="opinion" placeholder="Napisz swoją opinię..."></textarea>
+            <button onclick="submitOpinion()">Dodaj opinię</button>
+        </section>
+        <section id="return-button">
+            <button onclick="window.location.href='index.html'">Powrót na stronę główną</button>
+        </section>
+    </main>
+    <script>
+        function submitRating() {
+            let hero = document.getElementById("hero").value;
+            let score = document.getElementById("score").value;
+    
+            if (!score || score < 1 || score > 10) {
+                alert("Podaj poprawną ocenę (1-10)");
+                return;
+            }
+    
+            let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+            if (!ratings[hero]) ratings[hero] = [];
+            ratings[hero].push(parseInt(score));
+    
+            localStorage.setItem("ratings", JSON.stringify(ratings));
+            alert(`Ocena ${score} dla bohatera ${hero} została zapisana!`);
+    
+            notifyMainPage();
+        }
+    
+        function submitOpinion() {
+            let hero = document.getElementById("hero").value;
+            let opinion = document.getElementById("opinion").value.trim();
+    
+            if (!opinion) {
+                alert("Podaj swoją opinię.");
+                return;
+            }
+    
+            let opinions = JSON.parse(localStorage.getItem("opinions")) || {};
+            if (!opinions[hero]) opinions[hero] = [];
+            opinions[hero].push(opinion);
+    
+            localStorage.setItem("opinions", JSON.stringify(opinions));
+            alert(`Opinia dla ${hero} została zapisana!`);
+    
+            notifyMainPage();
+        }
+        
+        function notifyMainPage() {
+            window.dispatchEvent(new Event("storage"));
+        }
+    </script>
+</body>
+</html>

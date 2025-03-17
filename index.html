@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <img src="logo.png" alt="League of Legends Logo">
+            <ul>
+                <li><a href="#about">O grze</a></li>
+                <li><a href="#gallery">Galeria</a></li>
+                <li><a href="#stats">Statystyki</a></li>
+                <li><a href="ligusia.html">Głosowanie</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="slogan">
+            <h1>Witaj w świecie League of Legends</h1>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Galeria Bohaterów</h2>
+        </div>
+        <div class="slideshow-container">
+            <div class="slide fade" data-hero="Veigar">
+                <img src="Veigar.jpg" alt="Veigar">
+                <div class="caption">Veigar</div>
+                <div class="rating-opinions" id="Veigar-info"></div>
+            </div>
+            <div class="slide fade" data-hero="Lulu">
+                <img src="Lulu.jpg" alt="Lulu">
+                <div class="caption">Lulu</div>
+                <div class="rating-opinions" id="Lulu-info"></div>
+            </div>
+            <div class="slide fade" data-hero="Malphite">
+                <img src="Malphite.jpg" alt="Malphite">
+                <div class="caption">Malphite</div>
+                <div class="rating-opinions" id="Malphite-info"></div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 League of Legends. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let slideIndex = 0;
+            const slides = document.querySelectorAll(".slide");
+            function showSlides() {
+                slides.forEach(slide => slide.style.display = "none");
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].style.display = "block";
+                updateHeroInfo(slides[slideIndex].getAttribute("data-hero"));
+                setTimeout(showSlides, 3000);
+            }
+            showSlides();
+            loadRatingsAndOpinions();
+        });
+        
+        function updateHeroInfo(hero) {
+            const ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+            const opinions = JSON.parse(localStorage.getItem("opinions")) || {};
+            let avgScore = ratings[hero] ? (ratings[hero].reduce((a, b) => a + b, 0) / ratings[hero].length).toFixed(1) : "Brak ocen";
+            let opinionsText = opinions[hero] ? opinions[hero].map(op => `<li>${op}</li>`).join("") : "Brak opinii";
+            
+            let infoContainer = document.getElementById(`${hero}-info`);
+            if (infoContainer) {
+                infoContainer.innerHTML = `
+                    <p><strong>Średnia ocena:</strong> ${avgScore}/10</p>
+                    <p><strong>Opinie:</strong></p>
+                    <ul>${opinionsText}</ul>
+                `;
+            }
+        }
+        
+        function loadRatingsAndOpinions() {
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach(slide => {
+                updateHeroInfo(slide.getAttribute("data-hero"));
+            });
+        }
+    </script>
+</body>
+</html>
