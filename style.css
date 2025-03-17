@@ -1,4 +1,4 @@
-/* Resetowanie domyślnych styli */
+/* Existing styles */
 * {
     margin: 0;
     padding: 0;
@@ -14,115 +14,140 @@ body {
 
 header {
     background: #0A1428;
-    padding: 20px;
-    font-size: 24px;
+    padding: 15px 0;
     border-bottom: 2px solid #C8AA6E;
 }
 
-nav ul {
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
     gap: 20px;
 }
 
-main {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
+nav ul li a {
+    text-decoration: none;
+    color: #C8AA6E;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    transition: color 0.3s;
 }
 
-select, input, textarea, button {
-    width: 100%;
-    margin: 10px 0;
-    padding: 12px;
-    font-size: 16px;
+nav ul li a:hover {
+    color: #E0C58F;
+}
+
+.hero {
+    background: url('hero.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slogan {
+    background: rgba(10, 20, 40, 0.7);
+    padding: 20px;
     border-radius: 5px;
-    border: 2px solid #C8AA6E;
-    background: #0A1428;
+}
+
+.features {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.feature {
+    text-align: center;
+    max-width: 300px;
+}
+
+.feature i {
+    font-size: 40px;
     color: #C8AA6E;
 }
 
-button {
-    background-color: #C8AA6E;
-    color: #010A13;
-    font-weight: bold;
-    cursor: pointer;
+.gallery {
+    padding: 50px 0;
 }
 
-button:hover {
-    background-color: #E0C58F;
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.gallery-item {
+    position: relative;
+    width: 300px;
+    overflow: hidden;
+    border: 2px solid #C8AA6E;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-li {
-    background: #071A30;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #C8AA6E;
+.gallery-item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-.back-button {
+.gallery-item-info {
     position: absolute;
-    top: 15px;
-    left: 15px;
-    text-decoration: none;
-    font-size: 18px;
-    background: #000;
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #C8AA6E;
+    text-align: center;
+    padding: 10px 0;
     transition: background 0.3s;
 }
 
-.back-button:hover {
-    background: #333;
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Media Queries for Responsiveness */
+.gallery-item:hover .gallery-item-info {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.stats {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.stat h3 {
+    font-size: 32px;
+    color: #E0C58F;
+}
+
+footer {
+    background: #0A1428;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Responsive styles */
+img {
+    width: 100%;
+    height: auto;
+}
+
 @media (max-width: 768px) {
-    header {
-        font-size: 20px;
-        padding: 15px;
-    }
-    
-    main {
-        padding: 15px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .slideshow-container {
-        width: 100%;
-    }
-
-    .slide img {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        font-size: 18px;
-        padding: 10px;
-    }
-
-    nav ul {
-        font-size: 14px;
-    }
-
-    .slide .caption {
-        font-size: 14px;
-    }
-
-    .button {
-        font-size: 14px;
+    .gallery-item img {
+        max-width: 90%;
     }
 }
