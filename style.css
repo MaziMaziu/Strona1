@@ -1,215 +1,491 @@
-/* Existing styles */
+/* League of Legends Theme CSS */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap');
+
+:root {
+  /* League of Legends Color Palette */
+  --lol-gold: #C8AA6E;
+  --lol-gold-light: #F0E6D2;
+  --lol-blue-dark: #010A13;
+  --lol-blue: #0A1428;
+  --lol-blue-medium: #0A323C;
+  --lol-blue-light: #0397AB;
+  --lol-accent: #785A28;
+  --lol-red: #C89B3C;
+  --lol-black: #010A13;
+  --lol-text: #F0E6D2;
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Beaufort for LoL', serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sora', 'Beaufort for LoL', serif;
 }
 
 body {
-    background-color: #010A13;
-    color: #C8AA6E;
-    text-align: center;
+  background-color: var(--lol-blue-dark);
+  color: var(--lol-text);
+  text-align: center;
+  background-image: url('https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt35679ea9b51e343c/5ea22a059c358f0e6cd08d57/08_RUINATION-BILGEWATER_HOME-HEX.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  position: relative;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 10, 19, 0.85);
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--lol-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--lol-gold), transparent);
+}
+
+/* Header and Navigation */
 header {
-    background: #0A1428;
-    padding: 15px 0;
-    border-bottom: 2px solid #C8AA6E;
-    width: 100%;
+  background: linear-gradient(to bottom, var(--lol-blue) 0%, rgba(10, 20, 40, 0.9) 100%);
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--lol-gold);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+nav {
+  position: relative;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    justify-content: space-around;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+nav ul li {
+  position: relative;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #C8AA6E;
-    font-size: 18px;
-    text-transform: uppercase;
-    padding: 10px 15px;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: var(--lol-gold-light);
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  transition: all 0.3s ease;
+  display: block;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+nav ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: var(--lol-gold);
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
 nav ul li a:hover {
-    color: #E0C58F;
+  color: var(--lol-gold);
+  text-shadow: 0 0 8px rgba(200, 170, 110, 0.7);
 }
 
+nav ul li a:hover::before {
+  left: 15%;
+  right: 15%;
+  opacity: 1;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--lol-gold);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.mobile-toggle:hover {
+  transform: scale(1.1);
+  color: var(--lol-gold-light);
+}
+
+/* Hero Section */
 .hero {
-    background: url('hero.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  position: relative;
+  background: url('hero.jpg') no-repeat center center/cover;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(1, 10, 19, 0.8) 0%, rgba(10, 20, 40, 0.5) 100%);
+  z-index: 1;
 }
 
 .slogan {
-    background: rgba(10, 20, 40, 0.7);
-    padding: 20px;
-    border-radius: 5px;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(10, 20, 40, 0.8) 0%, rgba(10, 50, 60, 0.7) 100%);
+  padding: 2.5rem;
+  border-radius: 0;
+  max-width: 80%;
+  border: 1px solid var(--lol-gold);
+  box-shadow: 0 0 30px rgba(200, 170, 110, 0.3);
+  animation: glow 3s infinite alternate;
 }
 
-.features {
-    padding: 50px 0;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(200, 170, 110, 0.6);
+  }
 }
 
-.feature {
-    text-align: center;
-    max-width: 300px;
-}
-
-.feature i {
-    font-size: 40px;
-    color: #C8AA6E;
-}
-
+/* Gallery Section */
 .gallery {
-    padding: 50px 0;
-    width: 100%;
+  padding: 3rem 0;
+  width: 100%;
+  position: relative;
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+.slideshow-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  position: relative;
+  background: rgba(10, 20, 40, 0.5);
+  padding: 1.5rem;
+  border: 1px solid var(--lol-accent);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.gallery-item {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    overflow: hidden;
-    border: 2px solid #C8AA6E;
-    transition: transform 0.3s, box-shadow 0.3s;
+.slide {
+  display: none;
+  text-align: center;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
+.slide img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border: 2px solid var(--lol-gold);
+  transition: transform 0.5s;
 }
 
-.gallery-item-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: #C8AA6E;
-    text-align: center;
-    padding: 10px 0;
-    transition: background 0.3s;
+.slide img:hover {
+  transform: scale(1.02);
 }
 
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+.caption {
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--lol-gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-.gallery-item:hover .gallery-item-info {
-    background: rgba(0, 0, 0, 0.9);
+.rating-opinions {
+  background: rgba(10, 20, 40, 0.7);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-left: 3px solid var(--lol-gold);
+  text-align: left;
 }
 
-.stats {
-    padding: 50px 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+.rating-opinions p {
+  margin-bottom: 0.5rem;
 }
 
-.stat h3 {
-    font-size: 32px;
-    color: #E0C58F;
+.rating-opinions ul {
+  list-style-type: none;
+  padding-left: 1rem;
 }
 
+.rating-opinions ul li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating-opinions ul li::before {
+  content: '•';
+  color: var(--lol-gold);
+  position: absolute;
+  left: 0;
+}
+
+/* Fade Animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Footer */
 footer {
-    background: #0A1428;
-    padding: 20px;
-    width: 100%;
-    margin-top: 30px;
+  background: linear-gradient(to top, var(--lol-blue) 0%, rgba(10, 20, 40, 0.9) 100%);
+  padding: 1.5rem;
+  width: 100%;
+  margin-top: 3rem;
+  border-top: 2px solid var(--lol-gold);
+  position: relative;
 }
 
-/* Responsive styles */
-img {
-    width: 100%;
-    height: auto;
+footer::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: var(--lol-gold);
 }
 
-@media (max-width: 600px) {
-    .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .hero {
-        height: 200px;
-    }
-    .features {
-        flex-direction: column;
-    }
-    .gallery-item {
-        width: 100%;
-    }
+footer p {
+  color: var(--lol-gold-light);
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .hero {
+    height: 400px;
+  }
+  
+  .slideshow-container {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .hero {
-        height: 300px;
-    }
-    .features {
-        flex-direction: column;
-    }
-    .gallery-item {
-        width: 100%;
-    }
+  header {
+    padding: 1rem 0;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--lol-blue);
+    padding: 1rem;
+    gap: 0;
+    border: 1px solid var(--lol-gold);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+  }
+  
+  nav ul.show {
+    display: flex;
+  }
+  
+  nav ul li {
+    width: 100%;
+  }
+  
+  nav ul li a {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(200, 170, 110, 0.2);
+  }
+  
+  nav ul li:last-child a {
+    border-bottom: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+  
+  .logo img {
+    max-width: 120px;
+  }
+  
+  .hero {
+    height: 350px;
+  }
+  
+  .slogan {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .slideshow-container {
+    padding: 1rem;
+  }
 }
 
-@media (min-width: 769px) {
-    .container {
-        flex-direction: row;
-        align-items: center;
-    }
-    nav ul {
-        flex-direction: row;
-        gap: 20px;
-    }
-    .hero {
-        height: 400px;
-    }
-    .features {
-        flex-direction: row;
-    }
-    .gallery-item {
-        width: 300px;
-    }
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+  
+  .hero {
+    height: 300px;
+  }
+  
+  .slogan {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  .caption {
+    font-size: 1.2rem;
+  }
+  
+  .slideshow-container {
+    padding: 0.5rem;
+  }
+  
+  .slide img {
+    max-height: 300px;
+  }
+}
+
+/* League Champions Filter Effect */
+.champion-filter {
+  position: relative;
+}
+
+.champion-filter::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(10, 50, 60, 0) 30%, rgba(10, 20, 40, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lol-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lol-accent);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lol-gold);
 }
