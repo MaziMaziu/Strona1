@@ -359,7 +359,15 @@ footer p {
   }
   
   .container {
-    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
   }
   
   nav ul {
@@ -375,10 +383,12 @@ footer p {
     border: 1px solid var(--lol-gold);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     z-index: 100;
+    width: 100%;
+    margin-top: 10px;
   }
   
   nav ul.show {
-    display: flex;
+    display: flex !important; /* Wymuszenie wyświetlania menu */
   }
   
   nav ul li {
@@ -398,6 +408,13 @@ footer p {
   
   .mobile-toggle {
     display: block;
+    z-index: 101;
+    color: var(--lol-gold);
+    font-size: 24px;
+    background: transparent;
+    border: 1px solid var(--lol-gold);
+    padding: 5px 10px;
+    cursor: pointer;
   }
   
   .logo img {
