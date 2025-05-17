@@ -1,8 +1,7 @@
-/* League of Legends Theme CSS */
+/* League of Legends Theme CSS + Ulepszenia */
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap');
 
 :root {
-  /* League of Legends Color Palette */
   --lol-gold: #C8AA6E;
   --lol-gold-light: #F0E6D2;
   --lol-blue-dark: #010A13;
@@ -13,6 +12,7 @@
   --lol-red: #C89B3C;
   --lol-black: #010A13;
   --lol-text: #F0E6D2;
+  --cta-gradient: linear-gradient(90deg, #ffce4b 0%, #785A28 100%);
 }
 
 * {
@@ -26,24 +26,23 @@ body {
   background-color: var(--lol-blue-dark);
   color: var(--lol-text);
   text-align: center;
-  background-image: url('https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt35679ea9b51e343c/5ea22a059c358f0e6cd08d57/08_RUINATION-BILGEWATER_HOME-HEX.jpg');
+  background-image: url('https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt35679ea9b51e343c/5ea22a0599c358f0e6cd08d57/08_RUINATION-BILGEWATER_HOME-HEX.jpg');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-blend-mode: overlay;
   position: relative;
+  min-height: 100vh;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(1, 10, 19, 0.85);
-  z-index: -1;
+/* Parallax effect for hero */
+.hero.parallax {
+  background-attachment: fixed;
 }
+/* Animacje wchodzenia sekcji */
+.animate-fadein { opacity: 0; transition: opacity 1.4s; }
+.animate-fadein.visible { opacity: 1; }
+.animate-slidein { opacity: 0; transform: translateY(80px); transition: opacity 1.2s, transform 1.2s; }
+.animate-slidein.visible { opacity: 1; transform: translateY(0); }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -53,132 +52,40 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   text-shadow: 0 0 10px rgba(200, 170, 110, 0.5);
 }
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; position: relative; display: inline-block; padding-bottom: 10px; }
 h2::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 10%;
-  right: 10%;
-  height: 2px;
+  bottom: 0; left: 10%; right: 10%; height: 2px;
   background: linear-gradient(90deg, transparent, var(--lol-gold), transparent);
 }
-
-/* Header and Navigation */
-header {
-  background: linear-gradient(to bottom, var(--lol-blue) 0%, rgba(10, 20, 40, 0.9) 100%);
-  padding: 1rem 0;
-  border-bottom: 2px solid var(--lol-gold);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.logo img {
-  max-width: 150px;
-  height: auto;
-}
-
-nav {
-  position: relative;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  width: 100%;
-  justify-content: flex-end;
-}
-
-nav ul li {
-  position: relative;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: var(--lol-gold-light);
-  font-size: 1rem;
-  text-transform: uppercase;
-  padding: 0.6rem 1rem;
-  transition: all 0.3s ease;
-  display: block;
-  position: relative;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-nav ul li a::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  height: 2px;
-  background: var(--lol-gold);
-  transition: all 0.3s ease;
-  opacity: 0;
-}
-
-nav ul li a:hover {
-  color: var(--lol-gold);
-  text-shadow: 0 0 8px rgba(200, 170, 110, 0.7);
-}
-
-nav ul li a:hover::before {
-  left: 15%;
-  right: 15%;
-  opacity: 1;
-}
-
-.mobile-toggle {
-  display: none;
-  background: none;
+/* Przyciski CTA */
+.cta-btn {
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  background: var(--cta-gradient);
+  color: var(--lol-blue-dark);
   border: none;
-  color: var(--lol-gold);
-  font-size: 1.5rem;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(200,170,110,0.15);
   cursor: pointer;
-  transition: transform 0.3s;
+  letter-spacing: 1.5px;
+  transition: box-shadow 0.3s, transform 0.2s;
+  animation: pulse 2s infinite;
 }
-
-.mobile-toggle:hover {
-  transform: scale(1.1);
-  color: var(--lol-gold-light);
+.cta-btn:hover {
+  box-shadow: 0 8px 32px rgba(200,170,110,0.25);
+  transform: translateY(-3px) scale(1.05);
 }
-
-/* Hero Section */
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px rgba(200,170,110,0.2);}
+  50% { box-shadow: 0 0 30px rgba(200,170,110,0.4);}
+  100% { box-shadow: 0 0 10px rgba(200,170,110,0.2);}
+}
+/* Hero */
 .hero {
   position: relative;
   background: url('hero.jpg') no-repeat center center/cover;
@@ -190,18 +97,13 @@ nav ul li a:hover::before {
   overflow: hidden;
   margin-bottom: 3rem;
 }
-
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, rgba(1, 10, 19, 0.8) 0%, rgba(10, 20, 40, 0.5) 100%);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(0deg, rgba(1,10,19,0.8) 0%, rgba(10,20,40,0.5) 100%);
   z-index: 1;
 }
-
 .slogan {
   position: relative;
   z-index: 2;
@@ -213,51 +115,48 @@ nav ul li a:hover::before {
   box-shadow: 0 0 30px rgba(200, 170, 110, 0.3);
   animation: glow 3s infinite alternate;
 }
-
 @keyframes glow {
-  from {
-    box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
-  }
-  to {
-    box-shadow: 0 0 30px rgba(200, 170, 110, 0.6);
-  }
+  from { box-shadow: 0 0 10px rgba(200,170,110,0.3);}
+  to { box-shadow: 0 0 30px rgba(200,170,110,0.6);}
 }
-
-/* Gallery Section */
-.gallery {
-  padding: 3rem 0;
-  width: 100%;
-  position: relative;
-}
-
+/* Slideshow */
 .slideshow-container {
   max-width: 800px;
   margin: 2rem auto;
   position: relative;
   background: rgba(10, 20, 40, 0.5);
-  padding: 1.5rem;
+  padding: 1.5rem 2.5rem;
   border: 1px solid var(--lol-accent);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-
-.slide {
-  display: none;
-  text-align: center;
-}
-
+.slide { display: none; text-align: center; flex: 1; }
 .slide img {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
+  width: 100%; height: auto; max-height: 400px; object-fit: cover;
   border: 2px solid var(--lol-gold);
-  transition: transform 0.5s;
+  transition: transform 0.4s cubic-bezier(.4,2,.3,1), box-shadow 0.3s;
+  cursor: pointer;
+  box-shadow: 0 4px 28px rgba(10,20,40,0.3);
 }
-
-.slide img:hover {
-  transform: scale(1.02);
+.slide img.zoomable:hover { transform: scale(1.05) rotate(-1deg); box-shadow: 0 8px 30px rgba(200,170,110,0.25);}
+.prev, .next {
+  background: var(--lol-gold-light);
+  color: var(--lol-blue);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2.2rem;
+  line-height: 42px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(10, 20, 40, 0.3);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 2;
 }
-
+.prev:hover, .next:hover { background: var(--lol-gold); transform: scale(1.12);}
 .caption {
   padding: 1rem 0;
   font-size: 1.5rem;
@@ -266,49 +165,51 @@ nav ul li a:hover::before {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
 .rating-opinions {
   background: rgba(10, 20, 40, 0.7);
   padding: 1rem;
   margin-top: 1rem;
   border-left: 3px solid var(--lol-gold);
   text-align: left;
+  border-radius: 0 8px 8px 0;
 }
-
-.rating-opinions p {
-  margin-bottom: 0.5rem;
-}
-
-.rating-opinions ul {
-  list-style-type: none;
-  padding-left: 1rem;
-}
-
+.rating-opinions ul { list-style-type: none; padding-left: 1rem; }
 .rating-opinions ul li {
   position: relative;
   padding-left: 1rem;
   margin-bottom: 0.5rem;
 }
-
 .rating-opinions ul li::before {
-  content: '•';
+  content: '\2022';
   color: var(--lol-gold);
   position: absolute;
   left: 0;
 }
-
-/* Fade Animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+/* Modal powiększenie zdjęcia */
+.modal {
+  display: none;
+  position: fixed; z-index: 2000; left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(1,10,19,0.96);
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  animation: fadeInModal 0.35s;
 }
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+@keyframes fadeInModal { from {opacity: 0;} to {opacity: 1;} }
+.modal-content {
+  margin: 2rem auto; display: block; max-width: 90vw; max-height: 80vh;
+  border: 3px solid var(--lol-gold); box-shadow: 0 0 40px var(--lol-gold);
+  border-radius: 10px;
 }
+.close-modal {
+  color: var(--lol-gold-light);
+  position: absolute; top: 30px; right: 50px;
+  font-size: 2.5rem; font-weight: bold; cursor: pointer;
+  transition: color 0.2s;
+  z-index: 3;
+}
+.close-modal:hover { color: var(--lol-red); }
+#modal-caption { margin-top: 12px; color: var(--lol-gold-light); font-size: 1.2rem; }
 
-/* Footer */
 footer {
   background: linear-gradient(to top, var(--lol-blue) 0%, rgba(10, 20, 40, 0.9) 100%);
   padding: 1.5rem;
@@ -317,192 +218,40 @@ footer {
   border-top: 2px solid var(--lol-gold);
   position: relative;
 }
-
 footer::before {
   content: '';
   position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  height: 2px;
+  top: -15px; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 2px;
   background: var(--lol-gold);
 }
+footer p { color: var(--lol-gold-light); font-size: 0.9rem; }
 
-footer p {
-  color: var(--lol-gold-light);
-  font-size: 0.9rem;
-}
-
-/* Responsive Design */
+/* Responsywność */
 @media (max-width: 992px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-  
-  h2 {
-    font-size: 1.8rem;
-  }
-  
-  .hero {
-    height: 400px;
-  }
-  
-  .slideshow-container {
-    max-width: 90%;
-  }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  .hero { height: 400px; }
+  .slideshow-container { max-width: 90%; }
 }
-
 @media (max-width: 768px) {
-  header {
-    padding: 1rem 0;
-  }
-  
-  .container {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  nav {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-  }
-  
-  nav ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: var(--lol-blue);
-    padding: 1rem;
-    gap: 0;
-    border: 1px solid var(--lol-gold);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
-  nav ul.show {
-    display: flex !important; /* Wymuszenie wyświetlania menu */
-  }
-  
-  nav ul li {
-    width: 100%;
-  }
-  
-  nav ul li a {
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid rgba(200, 170, 110, 0.2);
-  }
-  
-  nav ul li:last-child a {
-    border-bottom: none;
-  }
-  
-  .mobile-toggle {
-    display: block;
-    z-index: 101;
-    color: var(--lol-gold);
-    font-size: 24px;
-    background: transparent;
-    border: 1px solid var(--lol-gold);
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .logo img {
-    max-width: 120px;
-  }
-  
-  .hero {
-    height: 350px;
-  }
-  
-  .slogan {
-    padding: 1.5rem;
-    max-width: 90%;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  .slideshow-container {
-    padding: 1rem;
-  }
+  .hero { height: 350px; }
+  .slideshow-container { padding: 1rem; }
+  .slogan { padding: 1.5rem; max-width: 90%; }
+  .slide img { max-height: 230px; }
 }
-
 @media (max-width: 576px) {
-  .container {
-    width: 95%;
-  }
-  
-  .hero {
-    height: 300px;
-  }
-  
-  .slogan {
-    padding: 1rem;
-  }
-  
-  h1 {
-    font-size: 1.5rem;
-  }
-  
-  h2 {
-    font-size: 1.4rem;
-  }
-  
-  .caption {
-    font-size: 1.2rem;
-  }
-  
-  .slideshow-container {
-    padding: 0.5rem;
-  }
-  
-  .slide img {
-    max-height: 300px;
-  }
+  .container { width: 98%; }
+  .hero { height: 280px; }
+  .slogan { padding: 0.7rem; }
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1.1rem; }
+  .caption { font-size: 1rem; }
+  .slide img { max-height: 160px; }
+  .prev, .next { width: 32px; height: 32px; font-size: 1.3rem; }
 }
-
-/* League Champions Filter Effect */
-.champion-filter {
-  position: relative;
-}
-
-.champion-filter::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(10, 50, 60, 0) 30%, rgba(10, 20, 40, 0.7) 100%);
-  pointer-events: none;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--lol-blue);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--lol-accent);
-  border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--lol-gold);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--lol-blue);}
+::-webkit-scrollbar-thumb { background: var(--lol-accent);}
+::-webkit-scrollbar-thumb:hover { background: var(--lol-gold);}
