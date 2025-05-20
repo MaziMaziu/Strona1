@@ -10,60 +10,44 @@
 <body>
     <header>
         <nav class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="League of Legends Logo" width="150" height="50">
-            </a>
+            <img src="logo.png" alt="League of Legends Logo">
             <ul>
-                <li><a href="index.html" aria-label="Strona główna">Strona główna</a></li>
-                <li><a href="about.html" aria-label="Informacje o grze">O grze</a></li>
-                <li><a href="gallery.html" aria-label="Galeria bohaterów">Galeria</a></li>
-                <li><a href="stats.html" aria-label="Statystyki gry">Statystyki</a></li>
-                <li><a href="ligusia.html" aria-label="Strona z głosowaniem">Głosowanie</a></li>
+                <li><a href="about.html">O grze</a></li>
+                <li><a href="gallery.html">Galeria</a></li>
+                <li><a href="stats.html">Statystyki</a></li>
+                <li><a href="vote.html">Głosowanie</a></li>
             </ul>
-            <button class="mobile-toggle" aria-label="Menu mobilne">
-                <i class="fas fa-bars"></i>
-            </button>
         </nav>
     </header>
     
-    <section class="hero parallax">
-        <div class="slogan animate-fadein">
+    <section class="hero">
+        <div class="slogan">
             <h1>Witaj w świecie League of Legends</h1>
-            <button class="cta-btn">Zagraj teraz!</button>
         </div>
     </section>
     
-    <section id="gallery" class="gallery animate-slidein">
+    <section id="gallery" class="gallery">
         <div class="container">
             <h2>Galeria Bohaterów</h2>
         </div>
         <div class="slideshow-container">
-            <button class="prev">&#10094;</button>
             <div class="slide fade" data-hero="Veigar">
-                <img src="Veigar.jpg" alt="Veigar" class="zoomable">
+                <img src="Veigar.jpg" alt="Veigar">
                 <div class="caption">Veigar</div>
                 <div class="rating-opinions" id="Veigar-info"></div>
             </div>
             <div class="slide fade" data-hero="Lulu">
-                <img src="Lulu.jpg" alt="Lulu" class="zoomable">
+                <img src="Lulu.jpg" alt="Lulu">
                 <div class="caption">Lulu</div>
                 <div class="rating-opinions" id="Lulu-info"></div>
             </div>
             <div class="slide fade" data-hero="Malphite">
-                <img src="Malphite.jpg" alt="Malphite" class="zoomable">
+                <img src="Malphite.jpg" alt="Malphite">
                 <div class="caption">Malphite</div>
                 <div class="rating-opinions" id="Malphite-info"></div>
             </div>
-            <button class="next">&#10095;</button>
         </div>
     </section>
-
-    <!-- Modal (powiększanie zdjęcia) -->
-    <div id="modal" class="modal">
-      <span class="close-modal">&times;</span>
-      <img class="modal-content" id="modal-img">
-      <div id="modal-caption"></div>
-    </div>
     
     <footer>
         <div class="container">
@@ -73,63 +57,25 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Slider
             let slideIndex = 0;
             const slides = document.querySelectorAll(".slide");
-            const nextBtn = document.querySelector(".next");
-            const prevBtn = document.querySelector(".prev");
-
-            function showSlides(n) {
+            function showSlides() {
                 slides.forEach(slide => slide.style.display = "none");
-                slideIndex = (n + slides.length) % slides.length;
+                slideIndex = (slideIndex + 1) % slides.length;
                 slides[slideIndex].style.display = "block";
                 updateHeroInfo(slides[slideIndex].getAttribute("data-hero"));
+                setTimeout(showSlides, 3000);
             }
-            function nextSlide() { showSlides(slideIndex + 1); }
-            function prevSlide() { showSlides(slideIndex - 1); }
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            showSlides(slideIndex);
-
-            // Auto play
-            setInterval(nextSlide, 4000);
-
-            // Load ratings and opinions
+            showSlides();
             loadRatingsAndOpinions();
-
-            // Animations on scroll
-            const animateOnScroll = () => {
-                document.querySelectorAll('.animate-fadein, .animate-slidein').forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if(rect.top < window.innerHeight - 100) {
-                        el.classList.add('visible');
-                    }
-                });
-            };
-            window.addEventListener('scroll', animateOnScroll);
-            animateOnScroll();
-
-            // Modal for images
-            const modal = document.getElementById("modal");
-            const modalImg = document.getElementById("modal-img");
-            const modalCaption = document.getElementById("modal-caption");
-            document.querySelectorAll('.zoomable').forEach(img => {
-                img.addEventListener('click', function() {
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    modalCaption.innerText = this.alt;
-                });
-            });
-            document.querySelector('.close-modal').onclick = function() {
-                modal.style.display = "none";
-            };
         });
-
+        
         function updateHeroInfo(hero) {
             const ratings = JSON.parse(localStorage.getItem("ratings")) || {};
             const opinions = JSON.parse(localStorage.getItem("opinions")) || {};
             let avgScore = ratings[hero] ? (ratings[hero].reduce((a, b) => a + b, 0) / ratings[hero].length).toFixed(1) : "Brak ocen";
             let opinionsText = opinions[hero] ? opinions[hero].map(op => `<li>${op}</li>`).join("") : "Brak opinii";
+            
             let infoContainer = document.getElementById(`${hero}-info`);
             if (infoContainer) {
                 infoContainer.innerHTML = `
@@ -139,12 +85,13 @@
                 `;
             }
         }
+        
         function loadRatingsAndOpinions() {
-            document.querySelectorAll(".slide").forEach(slide => {
+            const slides = document.querySelectorAll(".slide");
+            slides.forEach(slide => {
                 updateHeroInfo(slide.getAttribute("data-hero"));
             });
         }
     </script>
-    <script src="menu.js"></script>
 </body>
 </html>
