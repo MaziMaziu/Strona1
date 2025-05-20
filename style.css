@@ -1,215 +1,279 @@
-/* Existing styles */
+:root {
+    --main-bg: #111217;
+    --main-accent: #005A82;
+    --secondary-accent: #C89B3C;
+    --text-light: #f5f5fa;
+    --text-dark: #222;
+    --card-bg: #23243a;
+    --card-border: #2c2e4a;
+    --hover-bg: #23243a;
+    --hover-accent: #008ecf;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
 * {
+    box-sizing: border-box;
+}
+body {
+    background: var(--main-bg);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+}
+header {
+    background: linear-gradient(90deg,var(--main-accent),#0a2a36 80%);
+    box-shadow: var(--shadow);
+    padding: 0;
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+.logo {
+    height: 54px;
+}
+nav ul {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Beaufort for LoL', serif;
-}
-
-body {
-    background-color: #010A13;
-    color: #C8AA6E;
-    text-align: center;
-}
-
-header {
-    background: #0A1428;
-    padding: 15px 0;
-    border-bottom: 2px solid #C8AA6E;
-    width: 100%;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav ul {
+    gap: 25px;
     list-style: none;
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    justify-content: space-around;
 }
-
-nav ul li a {
+nav a {
+    color: var(--text-light);
     text-decoration: none;
-    color: #C8AA6E;
-    font-size: 18px;
+    font-weight: bold;
     text-transform: uppercase;
-    padding: 10px 15px;
-    transition: color 0.3s;
+    transition: color 0.2s;
+    letter-spacing: 1px;
 }
-
-nav ul li a:hover {
-    color: #E0C58F;
+nav a:hover {
+    color: var(--secondary-accent);
 }
-
-.hero {
-    background: url('hero.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.main-btn {
+    background: var(--main-accent);
+    color: var(--text-light);
+    border: none;
+    padding: 14px 34px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 18px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: var(--shadow);
 }
-
-.slogan {
-    background: rgba(10, 20, 40, 0.7);
-    padding: 20px;
-    border-radius: 5px;
+.main-btn:hover {
+    background: var(--secondary-accent);
+    color: var(--main-bg);
 }
-
-.features {
-    padding: 50px 0;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.container {
+    max-width: 1100px;
+    margin: 40px auto 0 auto;
+    padding: 0 20px 30px 20px;
 }
-
-.feature {
+#hero {
+    background: url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg') center/cover no-repeat;
+    padding: 110px 0 80px 0;
     text-align: center;
-    max-width: 300px;
+    color: #fff;
+    box-shadow: var(--shadow);
 }
-
-.feature i {
-    font-size: 40px;
-    color: #C8AA6E;
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 12px #000a;
 }
-
-.gallery {
-    padding: 50px 0;
-    width: 100%;
+#hero p {
+    font-size: 1.3em;
+    text-shadow: 0 1px 8px #000a;
 }
-
-.grid {
+h2 {
+    color: var(--secondary-accent);
+    margin-top: 0;
+    font-size: 2.3em;
+    text-align: left;
+    letter-spacing: 1px;
+}
+section {
+    margin-bottom: 40px;
+}
+article {
+    background: var(--card-bg);
+    padding: 18px 22px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--main-accent);
+}
+.champ-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 22px;
+    justify-content: space-between;
 }
-
-.gallery-item {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    overflow: hidden;
-    border: 2px solid #C8AA6E;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.gallery-item-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    color: #C8AA6E;
+.champ {
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px;
+    width: calc(25% - 16px);
     text-align: center;
-    padding: 10px 0;
-    transition: background 0.3s;
+    box-shadow: var(--shadow);
+    transition: border 0.2s, transform 0.2s;
 }
-
-.gallery-item:hover {
+.champ:hover {
+    border: 2px solid var(--secondary-accent);
+    transform: translateY(-5px) scale(1.05);
+}
+.champ img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    box-shadow: var(--shadow);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+.gallery-img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+.gallery-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--secondary-accent);
 }
-
-.gallery-item:hover .gallery-item-info {
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.stats {
-    padding: 50px 0;
-    display: flex;
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(20,22,32,0.95);
     justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
 }
-
-.stat h3 {
-    font-size: 32px;
-    color: #E0C58F;
+.lightbox-content {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
 }
-
-footer {
-    background: #0A1428;
+.lightbox .close {
+    color: #fff;
+    font-size: 2.7em;
+    font-weight: bold;
+    position: absolute;
+    right: 60px;
+    top: 60px;
+    cursor: pointer;
+    text-shadow: 0 2px 10px #000;
+}
+#faq {
+    margin-bottom: 20px;
+}
+.faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    padding: 12px 18px;
+    box-shadow: var(--shadow);
+}
+a {
+    color: var(--secondary-accent);
+    text-decoration: underline;
+}
+form {
+    background: var(--card-bg);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
     padding: 20px;
-    width: 100%;
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
 }
-
-/* Responsive styles */
-img {
-    width: 100%;
-    height: auto;
+form label {
+    margin-bottom: 5px;
+    color: var(--secondary-accent);
+    font-weight: bold;
 }
-
+form input, form textarea {
+    padding: 8px;
+    border-radius: 7px;
+    border: 1px solid #333;
+    background: #181828;
+    color: var(--text-light);
+    font-size: 1em;
+}
+form button {
+    background: var(--main-accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+form button:hover {
+    background: var(--secondary-accent);
+    color: #222;
+}
+.disclaimer {
+    font-size: 0.95em;
+    color: #aaa;
+    margin-top: 8px;
+}
+footer {
+    background: #090a10;
+    padding: 16px 0;
+    color: #777;
+    font-size: 1em;
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .champ-list {
+        flex-direction: column;
+        gap: 14px;
+    }
+    .champ {
+        width: 100%;
+    }
+    header .container {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
 @media (max-width: 600px) {
     .container {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 0 8px 18px 8px;
     }
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
+    #hero {
+        padding: 55px 0 50px 0;
     }
-    .hero {
-        height: 200px;
+    h2 {
+        font-size: 1.5em;
     }
-    .features {
-        flex-direction: column;
+    .champ img,
+    .gallery-img {
+        max-height: 180px;
+        object-fit: cover;
     }
-    .gallery-item {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .hero {
-        height: 300px;
-    }
-    .features {
-        flex-direction: column;
-    }
-    .gallery-item {
-        width: 100%;
-    }
-}
-
-@media (min-width: 769px) {
-    .container {
-        flex-direction: row;
-        align-items: center;
-    }
-    nav ul {
-        flex-direction: row;
-        gap: 20px;
-    }
-    .hero {
-        height: 400px;
-    }
-    .features {
-        flex-direction: row;
-    }
-    .gallery-item {
-        width: 300px;
+    .lightbox .close {
+        right: 10px;
+        top: 10px;
     }
 }
